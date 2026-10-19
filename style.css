@@ -1,10 +1,27 @@
+/* Colors are tokens so dark mode only swaps these values. */
+:root {
+  --bg: #fff;
+  --text: #111;
+  --muted: #555;
+  --link: #0645ad;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #e8e8e8;
+    --muted: #a3a3a3;
+    --link: #8ab4f8;
+  }
+}
+
 /* Page: white background, one centered column, system fonts. */
 body {
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
   max-width: 640px;
-  background: #fff;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
@@ -28,7 +45,7 @@ p {
 
 /* Links: standard blue, underlined, with a visible keyboard focus ring. */
 a {
-  color: #0645ad;
+  color: var(--link);
 }
 
 a:hover {
@@ -36,7 +53,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 2px solid #0645ad;
+  outline: 2px solid var(--link);
   outline-offset: 2px;
 }
 
@@ -64,5 +81,17 @@ li {
 
 /* Secondary text (authors, venue, placeholders). 4.5:1+ contrast on white. */
 .muted {
-  color: #555;
+  color: var(--muted);
+}
+
+/* Bullet points under each job. */
+.bullets {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  font-size: 0.95rem;
+}
+
+.bullets li {
+  margin-bottom: 0.3rem;
 }

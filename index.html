@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title>Nittesh Kumar</title>
   <meta name="description" content="Nittesh Kumar is a Software/Data Engineer at the COSMOS research lab, University of Arkansas at Little Rock, working on data infrastructure and research engineering workflows for computational social science.">
   <link rel="stylesheet" href="style.css">
@@ -33,24 +34,52 @@
         <li>
           Software Engineer (Data) II, <a href="https://cosmos.ualr.edu/" target="_blank" rel="noopener">COSMOS Research Center</a>, University of Arkansas at Little Rock<br>
           <span class="muted">Jul 2025 – Present</span>
+          <ul class="bullets">
+            <li>Architected Cosmos-Dataverse, an in-house scraping platform (React, TypeScript, FastAPI, MongoDB) with role-based access control, using Selenium and Playwright to replace Apify and save $15K/year across 20+ case studies and millions of scraped posts.</li>
+            <li>Designed an LLM-based relevancy filter (Gemma 4 31B) with confidence scoring, backed by Kafka job queueing for fault-tolerance.</li>
+            <li>Built MethodVerse, a full-stack platform orchestrating 10+ pluggable LLM/ML analysis pipelines, with Qwen3-VL multimodal embeddings (text, image, video) in Qdrant for similarity search and clustering across 1M+ posts.</li>
+            <li>Architected database schemas and data models across MongoDB collections for scalable storage; automated backups via Bash scripts, with instant replication for MinIO (S3 compatible open source object storage) on data arrival and scheduled backups for MongoDB.</li>
+            <li>Deployed and scaled open-source LLMs (HuggingFace) via vLLM on NVIDIA A40 GPUs, dynamically activating standby nodes under load to sustain thousands of inference requests/minute.</li>
+            <li>Co-developed CServe, a FastAPI control plane for LLM serving (vLLM) on a 36-GPU cluster; in production 4+ months, matching bare-vLLM throughput at 4× a Ray Serve baseline.</li>
+            <li>Optimized CI/CD pipelines with Jenkins, cutting deployment times by 20%, and managed scalable infrastructure with Docker.</li>
+            <li>Developed monitoring dashboards in Grafana/Kibana using Prometheus and ELK, with automated Slack alerting for incidents.</li>
+            <li>Built Claude Code workflows using MCP, custom Skills, and subagents to automate implementation, testing, debugging.</li>
+          </ul>
         </li>
         <li>
           <!-- TODO: link L'Enfant Capital Partners' website -->
           Quant Developer (Contract), L’Enfant Capital Partners, Washington DC<br>
           <span class="muted">Aug 2024 – Dec 2024</span>
+          <ul class="bullets">
+            <li>Built a market data pipeline and backtesting engine on AWS EC2/S3, ingesting live equity data via IBKR API and running Monte Carlo simulations across 100+ strategies and 30 assets to evaluate risk-adjusted performance.</li>
+            <li>Automated signal generation, trade execution, and logging, delivering end-of-day performance reports to stakeholders.</li>
+          </ul>
         </li>
         <li>
-          <!-- TODO: link SIMPLi's website -->
-          Data Analytics (Contract), SIMPLi, Inner Harbor, Maryland<br>
+          Data Analytics (Contract), <a href="https://eatsimpli.com/" target="_blank" rel="noopener">SIMPLi</a>, Inner Harbor, Maryland<br>
           <span class="muted">Jun 2024 – Aug 2024</span>
+          <ul class="bullets">
+            <li>Architected a data lake and warehouse from scratch as a founding engineer, staging raw EDI feeds, distributor reports, and spreadsheets in Azure Data Lake Storage (ADLS Gen2) and building Python/dbt pipelines into Azure Synapse Analytics.</li>
+            <li>Built Power BI dashboards tracking 30+ KPIs across sales, marketing, and supply chain teams.</li>
+            <li>Developed sales forecasting models to identify high-performing regions and trends.</li>
+          </ul>
         </li>
         <li>
           Software Engineer, <a href="https://www.techlogix.com/" target="_blank" rel="noopener">Techlogix</a>, Karachi<br>
           <span class="muted">Mar 2022 – Jul 2023</span>
+          <ul class="bullets">
+            <li>Built end-to-end test automation frameworks spanning browser (Selenium/Python, Cypress/JavaScript) and API layers (RestAssured/Java), automating 100+ features and validating 50+ backend services, cutting manual testing effort by 40%.</li>
+            <li>Designed and developed the data infrastructure for AdalFi on Azure using ADLS Gen2, Key Vault, Microsoft Entra ID with RBAC, and VNet private endpoints, supporting 1.2B+ transactions across 8+ partner banks.</li>
+          </ul>
         </li>
         <li>
-          Software Engineer, <a href="https://www.tpsworldwide.com/" target="_blank" rel="noopener">TPS Worldwide</a>, Karachi<br>
+          Software Engineer, <a href="https://www.tpsworldwide.com/" target="_blank" rel="noopener">TPS Worldwide</a> (Fintech), Karachi<br>
           <span class="muted">Aug 2021 – Mar 2022</span>
+          <ul class="bullets">
+            <li>Built backend services for State Bank’s RAAST payment gateway, ensuring ISO 20022 compliance.</li>
+            <li>Designed RESTful APIs in C++, TypeScript, and Node.js with stream processing, boosting transaction performance 20%.</li>
+            <li>Optimized advanced SQL, stored procedures, CTEs, and query tuning, for 15+ banks on TPS IRIS, resolving transaction issues.</li>
+          </ul>
         </li>
       </ul>
     </section>
@@ -100,6 +129,16 @@
         <li>
           B.S. Computer Science, <a href="https://www.nu.edu.pk/" target="_blank" rel="noopener">FAST-NUCES</a>, Karachi<br>
           <span class="muted">Aug 2017 – May 2021</span>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="certifications">
+      <h2 id="certifications">Certifications</h2>
+      <ul>
+        <li>
+          <a href="https://www.credly.com/badges/36783265-881c-4d35-89ff-0eec7a6a0ef4" target="_blank" rel="noopener">AWS Certified Data Engineer – Associate</a>, Amazon Web Services<br>
+          <span class="muted">Issued Nov 2025 · Expires Nov 2028 · Verify on Credly</span>
         </li>
       </ul>
     </section>
