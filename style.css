@@ -1,37 +1,40 @@
-/* Colors are tokens so dark mode only swaps these values. */
+/* Colors are tokens (Anthropic brand palette); dark mode only swaps these values. */
 :root {
-  --bg: #fff;
-  --text: #111;
-  --muted: #555;
-  --link: #0645ad;
+  --bg: #faf9f5;      /* Ivory */
+  --text: #141413;    /* Slate */
+  --muted: #5e5d59;
+  --line: #e8e6dc;
+  --underline: #b0aea5;
+  --accent: #d97757;  /* Clay: underlines only, too faint for small text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --text: #e8e8e8;
-    --muted: #a3a3a3;
-    --link: #8ab4f8;
+    --bg: #141413;
+    --text: #faf9f5;
+    --muted: #b0aea5;
+    --line: #3d3d3a;
+    --underline: #5e5d59;
   }
 }
 
-/* Page: white background, one centered column, system fonts. */
 body {
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
-  max-width: 640px;
+  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   overflow-wrap: break-word; /* long titles/URLs never cause horizontal scroll */
 }
 
-h1 {
-  margin: 0 0 0.5rem;
-  font-size: 1.75rem;
-  line-height: 1.2;
+.page {
+  padding: 2rem clamp(1.25rem, 5vw, 4rem) 4rem;
+}
+
+/* Header and tabs span the full width; page content stays at the left, at a readable width. */
+main {
+  max-width: 900px;
 }
 
 h2 {
@@ -39,25 +42,38 @@ h2 {
   font-size: 1.1rem;
 }
 
+main > section:first-child h2 {
+  margin-top: 0;
+}
+
 p {
   margin: 0 0 1rem;
 }
 
-/* Links: standard blue, underlined, with a visible keyboard focus ring. */
+.lead {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Links: text color with a soft underline; Clay underline on hover and a focus ring. */
 a {
-  color: var(--link);
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--link);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-/* Section lists: no bullets, a little space between items. */
 ul {
   margin: 0;
   padding: 0;
@@ -68,18 +84,77 @@ li {
   margin-bottom: 0.6rem;
 }
 
-/* Header contact links sit on one line and wrap on small screens. */
+/* Header: name on the left, contact links on the right. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95rem;
 }
 
-.links li {
+.links li,
+.tabs li {
   margin: 0;
 }
 
-/* Secondary text (authors, venue, placeholders). 4.5:1+ contrast on white. */
+.links a {
+  color: var(--muted);
+}
+
+/* Page tabs: left-aligned, uppercase mono, Clay underline on the current page. */
+.tabs {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 3rem;
+}
+
+.tabs ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0 2.25rem;
+}
+
+.tabs a {
+  display: block;
+  padding: 1rem 0 0.8rem;
+  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.tabs a:hover {
+  color: var(--text);
+}
+
+.tabs a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+
+/* Secondary text (dates, placeholders). */
 .muted {
   color: var(--muted);
 }
@@ -94,4 +169,65 @@ li {
 
 .bullets li {
   margin-bottom: 0.3rem;
+}
+
+/* Home: photo beside the intro; stacks on narrow screens. */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) 1fr;
+  gap: 2rem 3rem;
+  align-items: start;
+}
+
+.figure {
+  margin: 0;
+}
+
+.figure figcaption {
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .figure {
+    max-width: 260px;
+  }
+}
+
+/* Email tooltip: shows the address above the link on hover or keyboard focus. */
+.tip {
+  position: relative;
+}
+
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.tip:hover::after,
+.tip:focus-visible::after {
+  opacity: 1;
 }
