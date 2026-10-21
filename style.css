@@ -38,8 +38,9 @@ main {
 }
 
 h2 {
-  margin: 2.5rem 0 0.5rem;
-  font-size: 1.1rem;
+  margin: 2.5rem 0 1rem;
+  font-size: 1.4rem;
+  line-height: 1.3;
 }
 
 main > section:first-child h2 {
@@ -230,4 +231,35 @@ li {
 .tip:hover::after,
 .tip:focus-visible::after {
   opacity: 1;
+}
+
+/* List entries (papers): title > authors > venue, one clear step each. */
+.item-title,
+.item-authors,
+.item-venue {
+  display: block;
+}
+
+.item-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.item-authors {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.item-authors strong {
+  font-weight: 600;
+}
+
+.item-venue {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+main li:has(> .item-title) {
+  margin-bottom: 1.75rem;
 }
